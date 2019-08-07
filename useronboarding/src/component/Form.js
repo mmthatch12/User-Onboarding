@@ -19,27 +19,34 @@ const UserForm = ({ errors, touched, values, status }) => {
         <div>
             <Form>
 
-                <Field type="text" name="name" placeholder="Name" />
-                {touched.name && errors.name && (
-                    <p>{errors.name}</p>
-                )}
+                <h1>User Form</h1>
 
-                <Field type="email" name="email" placeholder="Email" />
-                {touched.email && errors.email && (
-                    <p>{errors.email}</p>
-                )}
+                <div className="form">
 
-                <Field type="password" name="password" placeholder="Password" />
-                {touched.password && errors.password && (
-                    <p>{errors.password}</p>
-                )}
+                    <Field className="formfield" type="text" name="name" placeholder="Name" />
+                    {touched.name && errors.name && (
+                        <p>{errors.name}</p>
+                    )}
 
-                <label>
-                    Terms of Service
-                    <Field type="checkbox" name="tos" checked={values.tos} />
-                </label>
-                
-                <button type="submit">Submit</button>
+                    <Field className="formfield" type="email" name="email" placeholder="Email" />
+                    {touched.email && errors.email && (
+                        <p>{errors.email}</p>
+                    )}
+
+                    <Field className="formfield" type="password" name="password" placeholder="Password" />
+                    {touched.password && errors.password && (
+                        <p>{errors.password}</p>
+                    )}
+
+                    <label>
+                        Terms of Service
+                        <Field className="formfield" type="checkbox" name="tos" checked={values.tos} />
+                    </label>
+                    
+                    <button type="submit">Submit</button>
+                    
+                </div>
+
             </Form>
 
             <h2>Users</h2>
