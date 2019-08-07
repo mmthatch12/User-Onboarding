@@ -3,6 +3,9 @@ import { Form, Field, withFormik, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import Axios from 'axios';
 
+import UserCard from './UserCard'
+
+
 const UserForm = ({ errors, touched, values, status }) => {
     const[users, setUsers] = useState([])
 
@@ -41,12 +44,8 @@ const UserForm = ({ errors, touched, values, status }) => {
 
             <h2>Users</h2>
 
-            {users.map(user => (
-                <div key={user.id}>
-                    <h3>{user.name}</h3>
-                    <h3>{user.email}</h3>
-                </div>
-            ))}
+            <UserCard userdata={users} />
+                
         </div>
     )
 }
