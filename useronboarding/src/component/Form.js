@@ -3,12 +3,17 @@ import { Form as FormicForm , Field, withFormic } from 'formik'
 
 const Form = () => {
     return (
-        <FormicForm />
-            <Field name="name" placeholder="Name" />
-            <Field name="email" placeholder="Email" />
-            <Field name="password" placeholder="Password" />
-            <Field name="terms of service" placeholder="Terms of SErvice" />
+        <FormicForm>
+            <Field type="text" name="name" placeholder="Name" />
+            <Field type="email" name="email" placeholder="Email" />
+            <Field type="password" name="password" placeholder="Password" />
+            <label>
+                Terms of Service
+                <Field type="checkbox" name="terms of service" />
+            </label>
+            
             <button>Submit</button>
+        </FormicForm>
     )
 }
 
