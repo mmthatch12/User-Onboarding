@@ -18,3 +18,15 @@
 .userCardDiv {
   border: 3px solid black;
 }
+
+.blue {
+  background: blue;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
