@@ -49,10 +49,11 @@ const FormicUserForm = withFormik({
 
     }),
 
-    handleSubmit(values) {
+    handleSubmit(values, { resetForm }) {
         Axios.post("https://reqres.in/api/users", values)
             .then(res => {
                 console.log(res)
+                resetForm()
             })
             .catch(err => {
                 console.log(err)
