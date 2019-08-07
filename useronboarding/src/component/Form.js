@@ -3,34 +3,49 @@ import { Form, Field, withFormik, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import Axios from 'axios';
 
-const UserForm = ({ errors, touched, values }) => {
+const UserForm = ({ errors, touched, values, status }) => {
     const[users, setUsers] = useState([])
 
+    useEffect(() => {
+        if (status) {
+            setUsers([...users, status])
+        }
+    }, [status])
+
     return (
-        <Form>
+        <div>
+            <Form>
 
-            <Field type="text" name="name" placeholder="Name" />
-            {touched.name && errors.name && (
-                <p>{errors.name}</p>
-            )}
+                <Field type="text" name="name" placeholder="Name" />
+                {touched.name && errors.name && (
+                    <p>{errors.name}</p>
+                )}
 
-            <Field type="email" name="email" placeholder="Email" />
-            {touched.email && errors.email && (
-                <p>{errors.email}</p>
-            )}
+                <Field type="email" name="email" placeholder="Email" />
+                {touched.email && errors.email && (
+                    <p>{errors.email}</p>
+                )}
 
-            <Field type="password" name="password" placeholder="Password" />
-            {touched.password && errors.password && (
-                <p>{errors.password}</p>
-            )}
+                <Field type="password" name="password" placeholder="Password" />
+                {touched.password && errors.password && (
+                    <p>{errors.password}</p>
+                )}
 
-            <label>
-                Terms of Service
-                <Field type="checkbox" name="tos" />
-            </label>
-            
-            <button type="submit">Submit</button>
-        </Form>
+                <label>
+                    Terms of Service
+                    <Field type="checkbox" name="tos" checked={values.tos} />
+                </label>
+                
+                <button type="submit">Submit</button>
+            </Form>
+
+            {users.map(user => (
+                <div key={user.id}>
+                    <h3>{user.name}</h3>
+                    <h3>{user.email}</h3>
+                </div>
+            ))}
+        </div>
     )
 }
 
@@ -51,14 +66,15 @@ const FormicUserForm = withFormik({
 
     }),
 
-    handleSubmit(values, { resetForm, }) {
+    handleSubmit(values, { resetForm, setStatus }) {
         Axios.post("https://reqres.in/api/users", values)
             .then(res => {
                 console.log(res)
+                setStatus(res.data)
                 resetForm()
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response)
 
             })
     }
