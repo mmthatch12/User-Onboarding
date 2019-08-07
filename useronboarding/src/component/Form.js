@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form as FormicForm , Field, withFormic } from 'formik'
+import { Form, Field, withFormik } from 'formik';
 
-const Form = () => {
+const UserForm = () => {
     return (
-        <FormicForm>
+        <Form>
             <Field type="text" name="name" placeholder="Name" />
             <Field type="email" name="email" placeholder="Email" />
             <Field type="password" name="password" placeholder="Password" />
@@ -13,11 +13,11 @@ const Form = () => {
             </label>
             
             <button>Submit</button>
-        </FormicForm>
+        </Form>
     )
 }
 
-const FormicUserForm = withFormic({ 
+const FormicUserForm = withFormik({ 
     mapPropsToValues({ name, email, password, tos }) {
         return {
             name: name || "",
@@ -27,6 +27,6 @@ const FormicUserForm = withFormic({
         }
     },
 
-})(Form)
+})(UserForm)
 
 export default FormicUserForm
