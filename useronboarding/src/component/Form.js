@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Field, withFormik, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import Axios from 'axios';
 
 const UserForm = ({ errors, touched, values }) => {
+    const[users, setUsers] = useState([])
+
     return (
         <Form>
 
@@ -49,7 +51,7 @@ const FormicUserForm = withFormik({
 
     }),
 
-    handleSubmit(values, { resetForm }) {
+    handleSubmit(values, { resetForm, }) {
         Axios.post("https://reqres.in/api/users", values)
             .then(res => {
                 console.log(res)
