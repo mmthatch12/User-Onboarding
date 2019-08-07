@@ -1,8 +1,14 @@
 import React from 'react';
+import { Form as FormicForm , Field, withFormic } from 'formik'
 
-function Form() {
+const Form = () => {
     return (
-        <h1>Form</h1>
+        <FormicForm />
+            <Field name="name" placeholder="Name" />
+            <Field name="email" placeholder="Email" />
+            <Field name="password" placeholder="Password" />
+            <Field name="terms of service" placeholder="Terms of SErvice" />
+            <button>Submit</button>
     )
 }
 
