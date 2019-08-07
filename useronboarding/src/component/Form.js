@@ -2,18 +2,27 @@ import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const UserForm = () => {
+const UserForm = ({ errors, touched, values }) => {
     return (
         <Form>
             <Field type="text" name="name" placeholder="Name" />
+            {touched.name && errors.name && (
+                <p>{errors.name}</p>
+            )}
             <Field type="email" name="email" placeholder="Email" />
+            {touched.email && errors.email && (
+                <p>{errors.email}</p>
+            )}
             <Field type="password" name="password" placeholder="Password" />
+            {touched.password && errors.password && (
+                <p>{errors.password}</p>
+            )}
             <label>
                 Terms of Service
                 <Field type="checkbox" name="tos" />
             </label>
             
-            <button>Submit</button>
+            <button type="submit">Submit</button>
         </Form>
     )
 }
