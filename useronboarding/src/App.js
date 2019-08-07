@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Form from './component/Form'
+import FormicUserForm from './component/Form'
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <FormicUserForm />
     </div>
   );
 }

@@ -9,7 +9,7 @@ const Form = () => {
             <Field type="password" name="password" placeholder="Password" />
             <label>
                 Terms of Service
-                <Field type="checkbox" name="terms of service" />
+                <Field type="checkbox" name="tos" />
             </label>
             
             <button>Submit</button>
@@ -17,4 +17,16 @@ const Form = () => {
     )
 }
 
-export default Form
+const FormicUserForm = withFormic({ 
+    mapPropsToValues({ name, email, password, tos }) {
+        return {
+            name: name || "",
+            email: email || "",
+            password: password || "",
+            tos: tos || false 
+        }
+    },
+
+})(Form)
+
+export default FormicUserForm
