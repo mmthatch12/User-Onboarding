@@ -39,6 +39,8 @@ const UserForm = ({ errors, touched, values, status }) => {
                 <button type="submit">Submit</button>
             </Form>
 
+            <h2>Users</h2>
+
             {users.map(user => (
                 <div key={user.id}>
                     <h3>{user.name}</h3>
