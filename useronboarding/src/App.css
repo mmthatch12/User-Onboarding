@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+
+}
+
+.formfield {
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.userCardDiv {
+  border: 3px solid black;
+}
+
+.blue {
+  background: blue;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
